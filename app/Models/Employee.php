@@ -12,7 +12,7 @@ class Employee extends Model
     use HasFactory;
     use SoftDeletes;
     
-    //при ошибке отправки данных в store Add to fillable property to allow mass assignment
+    //при ошибке отправки данных в store "Add to fillable property to allow mass assignment"
     protected $guarded = [];
 
 
