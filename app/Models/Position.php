@@ -13,6 +13,7 @@ class Position extends Model
   use HasFactory;
   use SoftDeletes;
 
+  protected $table = 'positions';
   protected $guarded = [];
 
   public function employees() {

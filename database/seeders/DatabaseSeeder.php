@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Employee;
+use App\Models\Position;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        $posits = Position::factory(15)->create();
+        $empls = Employee::factory(25)->create();
+        
+        foreach ($empls as $empl) {
+            $random = random_int(1, 3);
+            $posit_id = $posits->random($random)->pluck('id');
+            $empl->positions()->attach($posit_id);
+        }
     }
 }

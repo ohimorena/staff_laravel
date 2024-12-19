@@ -21,7 +21,6 @@ class CreateEmployeesTable extends Migration
             $table->string('sex');
             $table->date('date_of_birth');
             $table->timestamps();
-
             $table->softDeletes();
         });
     }

@@ -12,12 +12,10 @@ class Employee extends Model
     use HasFactory;
     use SoftDeletes;
     
-    //при ошибке отправки данных в store "Add to fillable property to allow mass assignment"
+    protected $table = 'employees';
     protected $guarded = [];
-
 
     public function positions() {
       return $this->belongsToMany(Position::class, 'employee_positions', 'empl_id', 'posit_id');
     }
-
   } 
