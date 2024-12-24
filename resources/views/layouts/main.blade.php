@@ -8,26 +8,21 @@
 </head>
 
 <body>
+  <div class="container mt-4 mb-4">
+    @section('navigation')
+      <div class="row">
+        <nav>
+          <ul>
+            <li><a href=" {{ route('empls.index') }} ">Список сотрудников</a></li>
+            <li><a href=" {{ route('empls.create') }} ">Создать нового сотрудника</a></li>
+            <li><a href=" {{ route('posits.index') }} ">Штатное расписание</a></li>
+          </ul>
+        </nav>
+      </div>
+    @show
 
-  @section('navigation')
-  <div class="container">
-    <div class="row">
-      <nav>
-        <ul>
-          <li><a href=" {{ route('empls.index') }} ">Список сотрудников</a></li>
-          <li><a href=" {{ route('empls.create') }} ">Создать нового сотрудника</a></li>
-          <li><a href=" {{ route('positions.index') }} ">Штатное расписание</a></li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  @show
-
-  <div class="container">
     @yield('content')
   </div>
-  
-</body>
-    
+</body> 
 </html>
                 

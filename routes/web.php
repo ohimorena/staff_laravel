@@ -12,9 +12,9 @@ Route::get('/employees/{empl}/edit', [EmployeeController::class, 'edit'])->name(
 Route::patch('employees/{empl}', [EmployeeController::class, 'update'])->name('empls.update');
 Route::delete('/employees/{empl}', [EmployeeController::class, 'destroy'])->name('empls.destroy');
 
-Route::get('/positions', [PositionController::class, 'index'])->name('positions.index');
-Route::get('/positions/create', [PositionController::class, 'create'])->name('positions.create');
-Route::post('/positions', [PositionController::class, 'store'])->name('positions.store');
-Route::get('/positions/{position}/edit', [PositionController::class, 'edit'])->name('positions.edit');
-Route::patch('/positions/{position}', [PositionController::class, 'update'])->name('positions.update');
-Route::delete('/positions/{position}', [PositionController::class, 'destroy'])->name('positions.destroy');
+Route::get('/positions', [PositionController::class, 'index'])->name('posits.index');
+Route::get('/positions/create', [PositionController::class, 'create'])->name('posits.create');
+Route::post('/positions', [PositionController::class, 'store'])->name('posits.store');
+Route::get('/positions/{posit}/edit', [PositionController::class, 'edit'])->name('posits.edit');
+Route::patch('/positions/{posit}', [PositionController::class, 'update'])->name('posits.update');
+Route::delete('/positions/{posit}', [PositionController::class, 'destroy'])->name('posits.destroy');

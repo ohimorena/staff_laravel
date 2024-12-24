@@ -5,52 +5,52 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Position;
-use App\Models\Employee;
-
 
 class PositionController extends Controller
 {
   public function index() {
-    $positions = Position::all();
-    return view('positions.index', compact('positions'));
+    $posits = Position::all();
+    return view('positions.index', compact('posits'));
   }
-
 
   public function create() {
     return view('positions.create');
   }
 
-
-  public function store() {
-    $data = request()->validate([
-      'position' => '',
-      'position_amount' => '',
-      'salary' => ''
-    ]);
-    Position::create($data);
-    return redirect()->route('positions.index');
+  public function store(Request $request) {
+    try {
+      $data = $request->validate([
+        'position' => 'required|string',
+        'position_amount' => 'required|integer',
+        'salary' => 'required|numeric'
+      ]);
+      Position::create($data);
+      return redirect()->route('posits.index');
+    } catch(\Exception $exception) {
+      return $exception->getMessage();
+    }
   }
 
-
-  public function edit(Position $position) {
-    return view('positions.edit', compact('position'));
+  public function edit(Position $posit) {
+    return view('positions.edit', compact('posit'));
   }
 
-
-  public function update(Position $position) {
-    $data = request()->validate([
-      'position' => '',
-      'position_amount' => '',
-      'salary' => ''
-    ]);
-    $position->update($data);
-    return redirect()->route('positions.index');
+  public function update(Request $request, Position $posit) {
+    try {
+      $data = $request->validate([
+        'position' => 'required|string',
+        'position_amount' => 'required|integer',
+        'salary' => 'required|numeric'
+      ]);
+      $posit->update($data);
+      return redirect()->route('posits.index');
+    } catch(\Exception $exception) {
+      return $exception->getMessage();
+    }
   }
 
-
-  public function destroy(Position $position) {
-    $position->delete();
-    return redirect()->route('positions.index');
+  public function destroy(Position $posit) {
+    $posit->delete();
+    return redirect()->route('posits.index');
   }
-
 }

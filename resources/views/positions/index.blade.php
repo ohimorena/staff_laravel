@@ -1,61 +1,58 @@
 @extends('layouts.main')
 
 @section('content')
-<p>
-  <h1 align="center">Штатное расписание</h1>
-</p>
 
-<div class="container">
+  <div class="text-center mb-4">
+    <h2>Штатное расписание</h2>
+  </div>
+
   <div>
     <table class="table">
-
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">№</th>
-        <th scope="col">Должность</th>
-        <th scope="col">Количество ставок</th>
-        <th scope="col">Оклад</th>
-        <th scope="col">Создано</th>
-        <th scope="col">Обновлено</th>
-        <th scope="col">&#9998;</th>
-        <th scope="col">&#10008;</th>
-      </tr>
-    </thead>
-  
-    <div>
-      <tbody>
-      @foreach($positions as $position)
+      <thead class="thead-dark">
         <tr>
-          <td>{{ $loop->iteration }}</td>
-          <td>{{ $position->position }}</td>
-          <td>{{ $position->position_amount }}</td>
-          <td>{{ $position->salary }}</td>
-          <td>{{ $position->created_at }}</td>
-          <td>{{ $position->updated_at }}</td>
-          <td>
-            <form action="{{ route('positions.edit', $position->id) }}" method="get">
-              <input type="submit" value="Изменить" class="btn btn-info">
-            </form>
-          <td>
-            <form action="{{ route('positions.destroy', $position->id) }}" method="post">
-              @csrf
-              @method('delete')
-              <input type="submit" value="Удалить" class="btn btn-danger">
-            </form>
-          </td>
-        
+          <th scope="col">№</th>
+          <th scope="col">Должность</th>
+          <th scope="col">Количество ставок</th>
+          <th scope="col">Оклад</th>
+          <th scope="col">Создано</th>
+          <th scope="col">Обновлено</th>
+          <th scope="col">&#9998;</th>
+          <th scope="col">&#10008;</th>
         </tr>
-      </tbody>
-      @endforeach
-    </div>
+      </thead>
+    
+      <div>
+        <tbody>
+        @foreach($posits as $posit)
+          <tr>
+            <td>{{ $loop->iteration }}</td>
+            <td>{{ $posit->position }}</td>
+            <td>{{ $posit->position_amount }}</td>
+            <td>{{ $posit->salary }}</td>
+            <td>{{ $posit->created_at }}</td>
+            <td>{{ $posit->updated_at }}</td>
+            <td>
+              <form action="{{ route('posits.edit', $posit->id) }}" method="get">
+                <input type="submit" value="Изменить" class="btn btn-info">
+              </form>
+            <td>
+              <form action="{{ route('posits.destroy', $posit->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <input type="submit" value="Удалить" class="btn btn-danger">
+              </form>
+            </td>
+          </tr>
+        </tbody>
+        @endforeach
+      </div>
+    </table>
   </div>
-  <br>
-</div>
 
-<div class="container">
-  <form action=" {{ route('positions.create') }} " method="get">
-    <input type="submit" value="Добавить" class="btn btn-info">
-  </form>
-</div>
-<br>
+  <div class="text-center my-4">
+    <form action=" {{ route('posits.create') }} " method="get">
+      <input type="submit" value="Добавить" class="btn btn-info">
+    </form>
+  </div>
+
 @endsection
